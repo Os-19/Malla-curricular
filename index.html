@@ -1,137 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Interactiva - Ing. Civil</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1>Malla Curricular Ingeniería Civil - Plan 117-3</h1>
+  <strong>Universidad Autónoma Gabriel René Moreno</strong>
 
-  <h1>Malla Curricular - Ingeniería Civil (Plan 117-3)</h1>
-  <p><strong>Universidad Autónoma Gabriel René Moreno</strong></p>
+  <!-- Semestres 1 al 10 -->
+  <div id="malla"></div>
 
-  <!-- PRIMER SEMESTRE -->
-  <div class="semestre">
-    <h2>1º Semestre</h2>
-    <div class="materia" onclick="alert('MAT101 - Cálculo I\nSin prerrequisitos')">MAT101 - Cálculo I</div>
-    <div class="materia" onclick="alert('MAT100 - Álgebra I\nSin prerrequisitos')">MAT100 - Álgebra I</div>
-    <div class="materia" onclick="alert('FIS100 - Física I\nSin prerrequisitos')">FIS100 - Física I</div>
-    <div class="materia" onclick="alert('QMC101 - Química Aplicada\nSin prerrequisitos')">QMC101 - Química Aplicada</div>
-    <div class="materia" onclick="alert('CIV351 - Dibujo Téc. Comp. I\nSin prerrequisitos')">CIV351 - Dibujo Técnico Comp. I</div>
-  </div>
-
-  <!-- SEGUNDO SEMESTRE -->
-  <div class="semestre">
-    <h2>2º Semestre</h2>
-    <div class="materia" onclick="alert('MAT102 - Cálculo II\nPrerrequisito: Cálculo I')">MAT102 - Cálculo II</div>
-    <div class="materia" onclick="alert('MAT103 - Álgebra II\nPrerrequisito: Álgebra I')">MAT103 - Álgebra II</div>
-    <div class="materia" onclick="alert('FIS102 - Física II\nPrerrequisitos: Física I')">FIS102 - Física II</div>
-    <div class="materia" onclick="alert('MAT204 - Informática I\nPrerrequisito: Álgebra I')">MAT204 - Informática I</div>
-    <div class="materia" onclick="alert('CIV249 - Geología\nPrerrequisito: Química Aplicada')">CIV249 - Geología</div>
-    <div class="materia" onclick="alert('CIV352 - Dibujo Téc. Comp. II\nPrerrequisito: Dibujo Téc. Comp. I')">CIV352 - Dibujo Técnico Comp. II</div>
-  </div>
-
-  <!-- TERCER SEMESTRE -->
-  <div class="semestre">
-    <h2>3º Semestre</h2>
-    <div class="materia" onclick="alert('MAT214 - Cálculo III\nPrerrequisito: Cálculo II')">MAT214 - Cálculo III</div>
-    <div class="materia" onclick="alert('MAT207 - Ecuaciones Diferenciales\nPrerrequisito: Cálculo II')">MAT207 - Ecuaciones Diferenciales</div>
-    <div class="materia" onclick="alert('CIV211 - Estr. Isostática I\nPrerrequisitos: Física II, Dibujo Técnico II')">CIV211 - Estr. Isostática I</div>
-    <div class="materia" onclick="alert('CIV213 - Topografía I\nPrerrequisito: Dibujo Técnico II')">CIV213 - Topografía I</div>
-    <div class="materia" onclick="alert('CIV216 - Mat. de Construcción\nPrerrequisito: Geología')">CIV216 - Materiales de Construcción</div>
-    <div class="materia" onclick="alert('MAT370 - Mét. Estadísticos\nPrerrequisito: Álgebra II')">MAT370 - Métodos Estadísticos</div>
-    <div class="materia" onclick="alert('MAT373 - Mét. Num. y Programación I\nPrerrequisito: Informática I')">MAT373 - Mét. Num. y Programación I</div>
-  </div>
-    
-  <!-- CUARTO SEMESTRE -->
-  <div class="semestre">
-    <h2>4º Semestre</h2>
-    <div class="materia" onclick="alert('MAT374 - Mét. Num. y Programación II\nPrerrequisito: Mét. Num. y Prog. I')">MAT374 - Mét. Num. y Prog. II</div>
-    <div class="materia" onclick="alert('CIV371 - Mecánica Racional\nPrerrequisito: Cálculo III')">CIV371 - Mecánica Racional</div>
-    <div class="materia" onclick="alert('CIV223 - Estr. Isostática II\nPrerrequisito: Estr. Isostática I')">CIV223 - Estr. Isostática II</div>
-    <div class="materia" onclick="alert('CIV215 - Fotogrametría y Geodesia\nPrerrequisito: Topografía I')">CIV215 - Fotogram. y Geodesia</div>
-    <div class="materia" onclick="alert('ELC369 - Electrotécnica P/Ing. Civil\nPrerrequisitos: Física II y Dibujo Técnico II')">ELC369 - Electrotéc. para Ing. Civil</div>
-    <div class="materia" onclick="alert('CIV391 - Métodos de Investigación\nPrerrequisito: Métodos Estadísticos')">CIV391 - Métodos de Investigación</div>
-  </div>
-
-  <!-- QUINTO SEMESTRE -->
-  <div class="semestre">
-    <h2>5º Semestre</h2>
-    <div class="materia" onclick="alert('CIV302 - Mec. de los Materiales I\nPrerrequisitos: Mecánica Racional y Estr. Isostática II')">CIV302 - Mec. de los Materiales I</div>
-    <div class="materia" onclick="alert('CIV229 - Hidráulica I\nPrerrequisito: Mecánica Racional')">CIV229 - Hidráulica I</div>
-    <div class="materia" onclick="alert('CIV218 - Tecnología del Hormigón\nPrerrequisito: Mat. de Construcción')">CIV218 - Tecnología del Hormigón</div>
-    <div class="materia" onclick="alert('CIV219 - Mecánica de los Suelos I\nPrerrequisito: Mat. de Construcción')">CIV219 - Mecánica de Suelos I</div>
-    <div class="materia" onclick="alert('CIV323 - Carreteras I\nPrerrequisito: Fotogrametría y Geodesia')">CIV323 - Carreteras I</div>
-    <div class="materia" onclick="alert('CIV329 - Arquit., Plan. Urb. y Reg.\nPrerrequisito: Mét. Num. y Programación I')">CIV329 - Arq., Plan. Urb. y Reg.</div>
-  </div>
-
-  <!-- SEXTO SEMESTRE -->
-  <div class="semestre">
-    <h2>6º Semestre</h2>
-    <div class="materia" onclick="alert('CIV374 - Mec. de los Materiales II\nPrerrequisito: Mecánica de los Materiales I')">CIV374 - Mec. de los Materiales II</div>
-    <div class="materia" onclick="alert('CIV230 - Hidráulica II\nPrerrequisito: Hidráulica I')">CIV230 - Hidráulica II</div>
-    <div class="materia" onclick="alert('CIV248 - Direc. de Obras y Valuación\nPrerrequisitos: Mecánica de Suelos I y Carreteras I')">CIV248 - Dir. Obras y Valuación</div>
-    <div class="materia" onclick="alert('CIV220 - Mecánica de Suelos II\nPrerrequisito: Mecánica de Suelos I')">CIV220 - Mecánica de Suelos II</div>
-    <div class="materia" onclick="alert('CIV346 - Construcción de Edificios I\nPrerrequisitos: Tecnología del Hormigón y Electrotécnica')">CIV346 - Construcción de Edif. I</div>
-    <div class="materia" onclick="alert('CIV361 - Saneamiento Ambiental\nPrerrequisito: Arq. y Plan. Urb. y Reg.')">CIV361 - Saneamiento Ambiental</div>
-    <div class="materia" onclick="alert('MAT208 - Análisis Vectorial y Tensores\nPrerrequisito: Mecánica Racional')">MAT208 - Análisis Vec. y Tensores</div>
-  </div>
-
-    <!-- SÉPTIMO SEMESTRE -->
-  <div class="semestre">
-    <h2>7º Semestre</h2>
-    <div class="materia" onclick="alert('CIV204 - Análisis Estructural I\nPrerrequisito: Mec. de Materiales II\nEspecialidad: EST')">CIV204 - Análisis Estructural I [EST]</div>
-    <div class="materia" onclick="alert('CIV206 - Análisis Matricial de Estructuras\nPrerrequisito: Mec. de Materiales II\nEspecialidad: EST')">CIV206 - Análisis Matricial de Estructuras [EST]</div>
-    <div class="materia" onclick="alert('CIV372 - Ingeniería Económica\nPrerrequisito: Dir. de Obras y Valuación\nEspecialidad: CC')">CIV372 - Ingeniería Económica [CC]</div>
-    <div class="materia" onclick="alert('CIV325 - Carreteras II\nPrerrequisito: Carreteras I\nEspecialidad: VT')">CIV325 - Carreteras II [VT]</div>
-    <div class="materia" onclick="alert('CIV246 - Análisis Estruc. Metales y Madera\nPrerrequisito: Mec. de los Materiales II\nEspecialidad: EST')">CIV246 - Análisis Metales y Madera [EST]</div>
-    <div class="materia" onclick="alert('CIV524 - Construcción de Edif. II\nPrerrequisito: Construcción de Edificios I\nEspecialidad: CC')">CIV524 - Construcción de Edif. II [CC]</div>
-    <div class="materia" onclick="alert('CIV232 - Obras Hidráulicas I\nPrerrequisito: Hidráulica II\nEspecialidad: HD')">CIV232 - Obras Hidráulicas I [HD]</div>
-    <div class="materia" onclick="alert('CIV285 - Gestión de Higiene y Seguridad Industrial\nPrerrequisito: Construcción de Edif. I\nEspecialidad: CC')">CIV285 - Higiene y Seg. Industrial [CC]</div>
-    <div class="materia" onclick="alert('CIV338 - Ingeniería Sanitaria I\nPrerrequisito: Hidráulica II\nEspecialidad: SNT')">CIV338 - Ingeniería Sanitaria I [SNT]</div>
-    <div class="materia" onclick="alert('CIV231 - Hidrología\nPrerrequisito: Hidráulica II\nEspecialidad: HD')">CIV231 - Hidrología [HD]</div>
-  </div>
-
-  <!-- OCTAVO SEMESTRE -->
-  <div class="semestre">
-    <h2>8º Semestre</h2>
-    <div class="materia" onclick="alert('CIV209 - Hormigón Armado I\nPrerrequisitos: Tecnología del Hormigón, Análisis Estructural I\nEspecialidad: EST')">CIV209 - Hormigón Armado I [EST]</div>
-    <div class="materia" onclick="alert('CIV410 - Ingeniería Legal\nPrerrequisito: Ingeniería Económica\nEspecialidad: CC')">CIV410 - Ingeniería Legal [CC]</div>
-    <div class="materia" onclick="alert('CIV250 - Fundaciones I\nPrerrequisitos: Mecánica de Suelos I, Análisis Estructural I\nEspecialidad: GT')">CIV250 - Fundaciones I [GT]</div>
-    <div class="materia" onclick="alert('CIV307 - Estructuras Especiales\nPrerrequisitos: Análisis Estructural I, Análisis Matricial\nEspecialidad: EST')">CIV307 - Estructuras Especiales [EST]</div>
-    <div class="materia" onclick="alert('CIV308 - Elasticidad Aplicada\nPrerrequisitos: Análisis Estructural I, Análisis Matricial\nEspecialidad: EST')">CIV308 - Elasticidad Aplicada [EST]</div>
-    <div class="materia" onclick="alert('CIV376 - Sistemas de Ingeniería\nPrerrequisito: Dir. de Obras y Valuación\nEspecialidad: CC')">CIV376 - Sistemas de Ingeniería [CC]</div>
-    <div class="materia" onclick="alert('CIV247 - Máquinas y Equip. de Const.\nPrerrequisito: Carreteras II\nEspecialidad: CC')">CIV247 - Máquinas y Equipos [CC]</div>
-    <div class="materia" onclick="alert('CIV528 - Tráfico y Transporte\nPrerrequisitos: Carreteras II, Arq. y Planificación\nEspecialidad: VT')">CIV528 - Tráfico y Transporte [VT]</div>
-    <div class="materia" onclick="alert('CIV357 - Hidrología Aplicada\nPrerrequisito: Hidrología\nEspecialidad: HD')">CIV357 - Hidrología Aplicada [HD]</div>
-    <div class="materia" onclick="alert('CIV365 - Obras Hidráulicas II\nPrerrequisito: Obras Hidráulicas I\nEspecialidad: HD')">CIV365 - Obras Hidráulicas II [HD]</div>
-    <div class="materia" onclick="alert('CIV339 - Ingeniería Sanitaria II\nPrerrequisito: Ingeniería Sanitaria I\nEspecialidad: SNT')">CIV339 - Ingeniería Sanitaria II [SNT]</div>
-    <div class="materia" onclick="alert('CIV326 - Carreteras III\nPrerrequisito: Carreteras II\nEspecialidad: VT')">CIV326 - Carreteras III [VT]</div>
-  </div>
-
-  <!-- NOVENO SEMESTRE -->
-  <div class="semestre">
-    <h2>9º Semestre</h2>
-    <div class="materia" onclick="alert('CIV210 - Hormigón Armado II\nPrerrequisito: Hormigón Armado I\nEspecialidad: EST')">CIV210 - Hormigón Armado II [EST]</div>
-    <div class="materia" onclick="alert('CIV309 - Dinámica de Estructuras\nPrerrequisitos: Hormigón Armado I, Elasticidad Aplicada\nEspecialidad: EST')">CIV309 - Dinámica de Estructuras [EST]</div>
-    <div class="materia" onclick="alert('CIV280 - Elab. y Gestión de Proyectos\nPrerrequisito: Ingeniería Legal\nEspecialidad: CC')">CIV280 - Gestión de Proyectos [CC]</div>
-    <div class="materia" onclick="alert('CIV312 - Puentes\nPrerrequisito: Hormigón Armado I\nEspecialidad: EST')">CIV312 - Puentes [EST]</div>
-    <div class="materia" onclick="alert('CIV311 - Hormigón Pretensado\nPrerrequisito: Hormigón Armado I\nEspecialidad: EST')">CIV311 - Hormigón Pretensado [EST]</div>
-    <div class="materia" onclick="alert('CIV207 - Análisis Estructural II\nPrerrequisito: Análisis Estructural I\nEspecialidad: EST')">CIV207 - Análisis Estructural II [EST]</div>
-    <div class="materia" onclick="alert('CIV287 - Adm. y Seguimiento de Obras\nPrerrequisito: Sistemas de Ingeniería\nEspecialidad: CC')">CIV287 - Seguimiento de Obras [CC]</div>
-    <div class="materia" onclick="alert('CIV327 - Aeropuertos\nPrerrequisito: Hormigón Armado I\nEspecialidad: VT')">CIV327 - Aeropuertos [VT]</div>
-    <div class="materia" onclick="alert('CIV324 - Ferrocarriles\nPrerrequisito: Máquinas y Equipos de Construcción\nEspecialidad: VT')">CIV324 - Ferrocarriles [VT]</div>
-    <div class="materia" onclick="alert('CIV366 - Modelación Hidráulica\nPrerrequisito: Obras Hidráulicas II\nEspecialidad: HD')">CIV366 - Modelación Hidráulica [HD]</div>
-    <div class="materia" onclick="alert('CIV359 - Trat. de Agua Potable\nPrerrequisito: Ing. Sanitaria II\nEspecialidad: SNT')">CIV359 - Trat. Agua Potable [SNT]</div>
-    <div class="materia" onclick="alert('CIV360 - Trat. Aguas Negras\nPrerrequisito: Ing. Sanitaria II\nEspecialidad: SNT')">CIV360 - Trat. Aguas Negras [SNT]</div>
-    <div class="materia" onclick="alert('CIV340 - Lab. de Ing. Sanitaria\nPrerrequisito: Ing. Sanitaria II\nEspecialidad: SNT')">CIV340 - Lab. Ing. Sanitaria [SNT]</div>
-    <div class="materia" onclick="alert('CIV345 - Instal. Hidrosanit. e Indus.\nPrerrequisito: Obras Hidráulicas I\nEspecialidad: SNT')">CIV345 - Instal. Hidrosanitarias [SNT]</div>
-    <div class="materia" onclick="alert('CIV222 - Mecánica de Rocas\nPrerrequisito: Fundaciones I\nEspecialidad: GT')">CIV222 - Mecánica de Rocas [GT]</div>
-    <div class="materia" onclick="alert('CIV251 - Fundaciones II\nPrerrequisito: Fundaciones I\nEspecialidad: GT')">CIV251 - Fundaciones II [GT]</div>
-  </div>
-
-  <!-- DÉCIMO SEMESTRE -->
-  <div class="semestre">
-    <h2>10º Semestre</h2>
-    <div class="materia" onclick="alert('GRL001 - Modalidad de Graduación\nRequiere aprobar todo')">GRL001 - Modalidad de Graduación</div>
-    <div class="materia" onclick="alert('CIV290 - Práctica Prof. Supervisada\nRequiere hasta 9º semestre')">CIV290 - Práctica Supervisada</div>
-  </div>
-
+  <script src="script.js"></script>
 </body>
 </html>
