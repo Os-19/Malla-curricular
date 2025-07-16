@@ -48,7 +48,54 @@ const materias = [
   { codigo: "CIV361", nombre: "Saneamiento Ambiental", semestre: 6, requisitos: ["CIV329"] },
   { codigo: "MAT208", nombre: "Análisis Vectorial y Tensores", semestre: 6, requisitos: ["CIV371"] },
 
-  // ---SEMESTRE 7 ---
+    // --- SEMESTRE 7 ---
+  { codigo: "CIV204", nombre: "Análisis Estructural 1", semestre: 7, requisitos: ["CIV374"] },
+  { codigo: "CIV206", nombre: "Análisis Matricial de Estructuras", semestre: 7, requisitos: ["CIV374"] },
+  { codigo: "CIV372", nombre: "Ingeniería Económica", semestre: 7, requisitos: ["CIV248"] },
+  { codigo: "CIV325", nombre: "Carreteras 2", semestre: 7, requisitos: ["CIV323"] },
+  { codigo: "CIV246", nombre: "Análisis Estructural Metálicas y Madera", semestre: 7, requisitos: ["CIV374"] },
+  { codigo: "CIV524", nombre: "Construcción de Edificios 2", semestre: 7, requisitos: ["CIV346"] },
+  { codigo: "CIV232", nombre: "Obras Hidráulicas 1", semestre: 7, requisitos: ["CIV230"] },
+  { codigo: "CIV285", nombre: "Gestión de Higiene y Seguridad Industrial", semestre: 7, requisitos: ["CIV346"] },
+  { codigo: "CIV338", nombre: "Ingeniería Sanitaria 1", semestre: 7, requisitos: ["CIV230"] },
+  { codigo: "CIV231", nombre: "Hidrología", semestre: 7, requisitos: ["CIV230"] },
+
+  // --- SEMESTRE 8 ---
+  { codigo: "CIV209", nombre: "Hormigón Armado 1", semestre: 8, requisitos: ["CIV218", "CIV204"] },
+  { codigo: "CIV410", nombre: "Ingeniería Legal", semestre: 8, requisitos: ["CIV372"] },
+  { codigo: "CIV250", nombre: "Fundaciones", semestre: 8, requisitos: ["CIV219", "CIV204"] },
+  { codigo: "CIV307", nombre: "Estructuras Especiales", semestre: 8, requisitos: ["CIV204", "CIV206"] },
+  { codigo: "CIV308", nombre: "Elasticidad Aplicada", semestre: 8, requisitos: ["CIV204", "CIV206"] },
+  { codigo: "CIV376", nombre: "Sistemas de Ingeniería", semestre: 8, requisitos: ["CIV248"] },
+  { codigo: "CIV247", nombre: "Máquinas y Equipos de Construcción", semestre: 8, requisitos: ["CIV325"] },
+  { codigo: "CIV528", nombre: "Tráfico y Transporte", semestre: 8, requisitos: ["CIV325", "CIV329"] },
+  { codigo: "CIV357", nombre: "Hidrología Aplicada", semestre: 8, requisitos: ["CIV231"] },
+  { codigo: "CIV365", nombre: "Obras Hidráulicas 2", semestre: 8, requisitos: ["CIV232"] },
+  { codigo: "CIV339", nombre: "Ingeniería Sanitaria 2", semestre: 8, requisitos: ["CIV338"] },
+  { codigo: "CIV326", nombre: "Carreteras 3", semestre: 8, requisitos: ["CIV325"] },
+
+    // --- SEMESTRE 9 ---
+  { codigo: "CIV210", nombre: "Hormigón Armado 2", semestre: 9, requisitos: ["CIV209"] },
+  { codigo: "CIV309", nombre: "Dinámica de Estructuras", semestre: 9, requisitos: ["CIV209", "CIV308"] },
+  { codigo: "CIV280", nombre: "Elaboración y Gestión de Proyectos", semestre: 9, requisitos: ["CIV410"] },
+  { codigo: "CIV312", nombre: "Puentes", semestre: 9, requisitos: ["CIV209"] },
+  { codigo: "CIV311", nombre: "Hormigón Pretensado", semestre: 9, requisitos: ["CIV209"] },
+  { codigo: "CIV207", nombre: "Análisis Estructural 2", semestre: 9, requisitos: ["CIV204"] },
+  { codigo: "CIV287", nombre: "Admin. y Seguimiento de Obras", semestre: 9, requisitos: ["CIV376"] },
+  { codigo: "CIV327", nombre: "Aeropuertos", semestre: 9, requisitos: ["CIV209"] },
+  { codigo: "CIV324", nombre: "Ferrocarriles", semestre: 9, requisitos: ["CIV247"] },
+  { codigo: "CIV366", nombre: "Modelación Hidráulica", semestre: 9, requisitos: ["CIV365"] },
+  { codigo: "CIV359", nombre: "Tratamiento de Agua Potable", semestre: 9, requisitos: ["CIV339"] },
+  { codigo: "CIV360", nombre: "Tratamiento de Aguas Negras", semestre: 9, requisitos: ["CIV339"] },
+  { codigo: "CIV340", nombre: "Laboratorio de Ingeniería Sanitaria", semestre: 9, requisitos: ["CIV339"] },
+  { codigo: "CIV345", nombre: "Instalaciones Hidrosanitarias e Industriales", semestre: 9, requisitos: ["CIV232"] },
+  { codigo: "CIV222", nombre: "Mecánica de Rocas (Geotecnia)", semestre: 9, requisitos: ["CIV250"] },
+  { codigo: "CIV251", nombre: "Fundaciones 2", semestre: 9, requisitos: ["CIV250"] },
+
+  // --- SEMESTRE 10 ---
+  { codigo: "GRL001", nombre: "Modalidad de Graduación", semestre: 10, requisitos: ["CIV210", "CIV309", "CIV280", "CIV207", "CIV287", "CIV312", "CIV311", "CIV327", "CIV324", "CIV366", "CIV359", "CIV360", "CIV340", "CIV345", "CIV222", "CIV251"] },
+  { codigo: "CIV290", nombre: "Práctica Profesional Supervisada", semestre: 10, requisitos: ["CIV210", "CIV309", "CIV280", "CIV207", "CIV287", "CIV312", "CIV311", "CIV327", "CIV324", "CIV366", "CIV359", "CIV360", "CIV340", "CIV345", "CIV222", "CIV251"] },
+
 ];
 
 const mallaContainer = document.getElementById("malla");
