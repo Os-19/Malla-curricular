@@ -163,49 +163,54 @@
     {codigo: "CIV290", nombre: "Practicas profesionales supervisadas PPS", semestre: 10, requisitos: []}
     ];
 
-    const totalSemestres = 10;
-    const malla = document.getElementById("malla");
+   const materiasEstado = {};
+  // Cargar estado guardado del localStorage
+  const savedState = localStorage.getItem('materiasAprobadas');
+  if (savedState) {
+    Object.assign(materiasEstado, JSON.parse(savedState));
+  }
 
-    for (let i = 1; i <= totalSemestres; i++) {
-      const col = document.createElement("div");
-      col.className = "semester";
-      col.dataset.semestre = i;
-      col.innerHTML = `<h2>Semestre ${i}</h2>`;
-      malla.appendChild(col);
-    }
+  function renderMaterias() {
+    const container = document.getElementById("materias");
+    container.innerHTML = "";
 
-    const materiasEstado = {};
-
-    function renderMaterias() {
-      document.querySelectorAll(".subject").forEach(e => e.remove());
-      materias.forEach(m => {
-        const container = document.querySelector(`.semester[data-semestre='${m.semestre}']`);
+    for (let s = 1; s <= 10; s++) {
+      const sem = document.createElement("div");
+      sem.className = "semestre";
+      sem.innerHTML = `<h3>Semestre ${s}</h3>`;
+      materias.filter(m => m.semestre === s).forEach(m => {
         const div = document.createElement("div");
-        div.className = "subject";
-        div.id = m.codigo;
-        div.innerHTML = `<strong>${m.codigo}</strong> - ${m.nombre}`;
+        div.className = "materia";
 
-        const noCumple = m.requisitos.filter(r => !materiasEstado[r]);
-        if (noCumple.length > 0) {
-          div.classList.add("locked");
-          const tooltip = document.createElement("div");
-          tooltip.className = "tooltip";
-          tooltip.textContent = "Faltan: " + noCumple.join(", ");
-          div.appendChild(tooltip);
-        } else {
-          div.onclick = () => {
-            materiasEstado[m.codigo] = true;
-            renderMaterias();
-          };
-        }
+        const requisitosCumplidos = m.requisitos.every(r => materiasEstado[r]);
+        div.classList.add(requisitosCumplidos ? "enabled" : "disabled");
 
-        if (materiasEstado[m.codigo]) div.classList.add("passed");
+        if (materiasEstado[m.codigo]) div.classList.add("completada");
 
-        container.appendChild(div);
+        div.innerText = m.nombre;
+        div.title = requisitosCumplidos ? "Disponible" : `Faltan: ${m.requisitos.filter(r => !materiasEstado[r]).join(", ")}`;
+
+        div.onclick = () => {
+          materiasEstado[m.codigo] = true;
+          localStorage.setItem('materiasAprobadas', JSON.stringify(materiasEstado));
+          renderMaterias();
+        };
+
+        sem.appendChild(div);
       });
+      container.appendChild(sem);
     }
+  }
 
-    renderMaterias();
-  </script>
-</body>
-</html>
+  function resetearProgreso() {
+    localStorage.removeItem('materiasAprobadas');
+    location.reload();
+  }
+
+  window.onload = renderMaterias;
+</script>
+
+<!-- Botón para reiniciar progreso -->
+<button onclick="resetearProgreso()" style="margin: 1rem auto; display: block; background: #f66; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer;">
+  Reiniciar progreso
+</button>
