@@ -1,79 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Malla Curricular - Ingeniería Civil (UAGRM)</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Malla Curricular Interactiva - Ingeniería Civil UAGRM</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f4f8;
-      margin: 0;
-      padding: 1rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+      color: #333;
     }
     h1 {
       text-align: center;
-      margin-bottom: 2rem;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      gap: 1rem;
-    }
-    .semester {
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .semester:nth-child(odd) {
-      background: #e3efff;
-    }
-    .semester:nth-child(even) {
-      background: #e9fff3;
-    }
-    .semester h2 {
-      text-align: center;
       margin-bottom: 1rem;
-      font-size: 1.1rem;
+      color: #2c3e50;
     }
-    .subject {
+    .semestre {
+      border: 1px solid #ddd;
+      border-radius: 8px;
       background: #fff;
-      border: 1px solid #ccc;
-      margin: 0.4rem 0;
-      padding: 0.5rem;
-      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 15px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .semestre h3 {
+      margin-top: 0;
+      color: #2980b9;
+    }
+    .materia {
+      margin: 6px 0;
+      padding: 8px 12px;
+      border-radius: 6px;
       cursor: pointer;
-      position: relative;
-      transition: background 0.3s ease;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+      border: 1px solid transparent;
     }
-    .subject.locked {
-      background: #eee;
+    .materia.enabled {
+      background-color: #dff0d8;
+      border-color: #3c763d;
+      color: #3c763d;
+    }
+    .materia.disabled {
+      background-color: #f2dede;
+      color: #a94442;
       cursor: not-allowed;
+      border-color: #a94442;
     }
-    .subject.passed {
-      background: #a0e3a0 !important;
+    .materia.completada {
+      background-color: #5cb85c;
+      color: white;
       text-decoration: line-through;
+      border-color: #4cae4c;
+      cursor: default;
     }
-    .subject .tooltip {
-      display: none;
-      position: absolute;
-      background: #333;
-      color: #fff;
-      padding: 0.3rem 0.6rem;
-      border-radius: 4px;
-      top: 100%;
-      left: 0;
-      white-space: nowrap;
-      z-index: 10;
-    }
-    .subject.locked:hover .tooltip {
+    button#resetBtn {
       display: block;
+      margin: 0 auto 2rem auto;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button#resetBtn:hover {
+      background-color: #c0392b;
     }
   </style>
 </head>
 <body>
-  <h1>Malla Curricular - Ingeniería Civil (UAGRM)</h1>
-  <div class="grid" id="malla"></div>
+  <h1>Malla Curricular Interactiva - Ingeniería Civil UAGRM</h1>
+
+  <div id="materias"></div>
+
+  <button id="resetBtn">Reiniciar progreso</button>
+
   <script>
     const materias = [
       {codigo: "MAT101", nombre: "Calculo 1", semestre: 1, requisitos: []},
@@ -81,6 +86,7 @@
       {codigo: "FIS100", nombre: "Física 1", semestre: 1, requisitos: []},
       {codigo: "QMC101", nombre: "Química aplicada", semestre: 1, requisitos: []},
       {codigo: "CIV351", nombre: "Dibujo técnico computarizado", semestre: 1, requisitos: []},
+
       {codigo: "MAT102", nombre: "Calculo 2", semestre: 2, requisitos: ["MAT101"]},
       {codigo: "MAT103", nombre: "Algebra 2", semestre: 2, requisitos: ["MAT100"]},
       {codigo: "FIS102", nombre: "Física 2", semestre: 2, requisitos: ["FIS100"]},
@@ -118,102 +124,102 @@
       {codigo: "CIV361", nombre: "Saneamiento Ambiental", semestre: 6, requisitos: ["CIV329"]},
       {codigo: "MAT208", nombre: "Análisis Vectorial y Tensorial", semestre: 6, requisitos: ["CIV371"]},
 
-       {codigo: "CIV204", nombre: "Análisis Estructural 1", semestre: 7, requisitos: ["MAT374"]},
-    {codigo: "CIV206", nombre: "Análisis Matricial de Estructura", semestre: 7, requisitos: ["MAT374"]},
-    {codigo: "CIV372", nombre: "Ingeniería Económica", semestre: 7, requisitos: ["CIV248"]},
-    {codigo: "CIV325", nombre: "Carreteras 2", semestre: 7, requisitos: ["CIV323"]},
-    {codigo: "CIV246", nombre: "Análisis estruc. Metal y Mad.", semestre: 7, requisitos: ["CIV374"]},
-    {codigo: "CIV524", nombre: "Construcción de Edificios 2", semestre: 7, requisitos: ["CIV346"]},
-    {codigo: "CIV232", nombre: "Obras Hidráulicas 1", semestre: 7, requisitos: ["CIV230"]},
-    {codigo: "CIV285", nombre: "Gestión de H y Seg. Indus.", semestre: 7, requisitos: ["CIV346"]},
-    {codigo: "CIV338", nombre: "Ingeniería Sanitarias 1", semestre: 7, requisitos: ["CIV230"]},
-    {codigo: "CIV231", nombre: "Hidrología", semestre: 7, requisitos: ["CIV230"]},
+      {codigo: "CIV204", nombre: "Análisis Estructural 1", semestre: 7, requisitos: ["MAT374"]},
+      {codigo: "CIV206", nombre: "Análisis Matricial de Estructura", semestre: 7, requisitos: ["MAT374"]},
+      {codigo: "CIV372", nombre: "Ingeniería Económica", semestre: 7, requisitos: ["CIV248"]},
+      {codigo: "CIV325", nombre: "Carreteras 2", semestre: 7, requisitos: ["CIV323"]},
+      {codigo: "CIV246", nombre: "Análisis estruc. Metal y Mad.", semestre: 7, requisitos: ["CIV374"]},
+      {codigo: "CIV524", nombre: "Construcción de Edificios 2", semestre: 7, requisitos: ["CIV346"]},
+      {codigo: "CIV232", nombre: "Obras Hidráulicas 1", semestre: 7, requisitos: ["CIV230"]},
+      {codigo: "CIV285", nombre: "Gestión de H y Seg. Indus.", semestre: 7, requisitos: ["CIV346"]},
+      {codigo: "CIV338", nombre: "Ingeniería Sanitarias 1", semestre: 7, requisitos: ["CIV230"]},
+      {codigo: "CIV231", nombre: "Hidrología", semestre: 7, requisitos: ["CIV230"]},
 
-    {codigo: "CIV209", nombre: "Hormigón Armado 1", semestre: 8, requisitos: ["CIV218", "CIV204"]},
-    {codigo: "CIV410", nombre: "Ingeniería legal", semestre: 8, requisitos: ["CIV372"]},
-    {codigo: "CIV250", nombre: "Fundaciones", semestre: 8, requisitos: ["CIV220", "CIV204"]},
-    {codigo: "CIV307", nombre: "Estructuras Especiales", semestre: 8, requisitos: ["CIV204", "CIV206"]},
-    {codigo: "CIV308", nombre: "Elasticidad Aplicada", semestre: 8, requisitos: ["CIV204", "CIV206"]},
-    {codigo: "CIV376", nombre: "Sistemas de Ingeniería", semestre: 8, requisitos: ["CIV248"]},
-    {codigo: "CIV247", nombre: "Maq. y Equip. de Constr.", semestre: 8, requisitos: ["CIV325"]},
-    {codigo: "CIV528", nombre: "Tráfico y Transporte", semestre: 8, requisitos: ["CIV325", "CIV329"]},
-    {codigo: "CIV365", nombre: "Obras Hidráulicas 2", semestre: 8, requisitos: ["CIV232"]},
-    {codigo: "CIV357", nombre: "Hidrología Aplicada", semestre: 8, requisitos: ["CIV231"]},
-    {codigo: "CIV339", nombre: "Ingeniería Sanitaria 2", semestre: 8, requisitos: ["CIV338"]},
-    {codigo: "CIV326", nombre: "Carreteras 3", semestre: 8, requisitos: ["CIV325"]},
+      {codigo: "CIV209", nombre: "Hormigón Armado 1", semestre: 8, requisitos: ["CIV218", "CIV204"]},
+      {codigo: "CIV410", nombre: "Ingeniería legal", semestre: 8, requisitos: ["CIV372"]},
+      {codigo: "CIV250", nombre: "Fundaciones", semestre: 8, requisitos: ["CIV220", "CIV204"]},
+      {codigo: "CIV307", nombre: "Estructuras Especiales", semestre: 8, requisitos: ["CIV204", "CIV206"]},
+      {codigo: "CIV308", nombre: "Elasticidad Aplicada", semestre: 8, requisitos: ["CIV204", "CIV206"]},
+      {codigo: "CIV376", nombre: "Sistemas de Ingeniería", semestre: 8, requisitos: ["CIV248"]},
+      {codigo: "CIV247", nombre: "Maq. y Equip. de Constr.", semestre: 8, requisitos: ["CIV325"]},
+      {codigo: "CIV528", nombre: "Tráfico y Transporte", semestre: 8, requisitos: ["CIV325", "CIV329"]},
+      {codigo: "CIV365", nombre: "Obras Hidráulicas 2", semestre: 8, requisitos: ["CIV232"]},
+      {codigo: "CIV357", nombre: "Hidrología Aplicada", semestre: 8, requisitos: ["CIV231"]},
+      {codigo: "CIV339", nombre: "Ingeniería Sanitaria 2", semestre: 8, requisitos: ["CIV338"]},
+      {codigo: "CIV326", nombre: "Carreteras 3", semestre: 8, requisitos: ["CIV325"]},
 
-    {codigo: "CIV210", nombre: "Hormigón Armado 2", semestre: 9, requisitos: ["CIV209"]},
-    {codigo: "CIV309", nombre: "Dinámica de Estruc.", semestre: 9, requisitos: ["CIV209", "CIV308"]},
-    {codigo: "CIV280", nombre: "Elab. y Gestión de Proyec.", semestre: 9, requisitos: ["CIV410"]},
-    {codigo: "CIV312", nombre: "Puentes", semestre: 9, requisitos: ["CIV209"]},
-    {codigo: "CIV311", nombre: "Hormigón Pretensado", semestre: 9, requisitos: ["CIV209"]},
-    {codigo: "CIV207", nombre: "Análisis Estructural 2", semestre: 9, requisitos: ["CIV204"]},
-    {codigo: "CIV287", nombre: "Adm. y Seguimiento de obras", semestre: 9, requisitos: ["CIV376"]},
-    {codigo: "CIV327", nombre: "Aeropuertos", semestre: 9, requisitos: ["CIV209"]},
-    {codigo: "CIV324", nombre: "Ferrocarriles", semestre: 9, requisitos: ["CIV247"]},
-    {codigo: "CIV366", nombre: "Modelación Hidráulica", semestre: 9, requisitos: ["CIV365"]},
-    {codigo: "CIV359", nombre: "Tratamiento de agua Potable", semestre: 9, requisitos: ["CIV339"]},
-    {codigo: "CIV360", nombre: "Tratamiento de aguas Negras", semestre: 9, requisitos: ["CIV339"]},
-    {codigo: "CIV340", nombre: "Lanorat. de Ing. Sanitaria", semestre: 9, requisitos: ["CIV339"]},
-    {codigo: "CIV345", nombre: "Instal. Hidrosanit. e Indus.", semestre: 9, requisitos: ["CIV232"]},
-    {codigo: "CIV222", nombre: "Mec. de Rocas (Geotecnia)", semestre: 9, requisitos: ["CIV250"]},
-    {codigo: "CIV251", nombre: "Fundaciones 2", semestre: 9, requisitos: ["CIV250"]},
+      {codigo: "CIV210", nombre: "Hormigón Armado 2", semestre: 9, requisitos: ["CIV209"]},
+      {codigo: "CIV309", nombre: "Dinámica de Estruc.", semestre: 9, requisitos: ["CIV209", "CIV308"]},
+      {codigo: "CIV280", nombre: "Elab. y Gestión de Proyec.", semestre: 9, requisitos: ["CIV410"]},
+      {codigo: "CIV312", nombre: "Puentes", semestre: 9, requisitos: ["CIV209"]},
+      {codigo: "CIV311", nombre: "Hormigón Pretensado", semestre: 9, requisitos: ["CIV209"]},
+      {codigo: "CIV207", nombre: "Análisis Estructural 2", semestre: 9, requisitos: ["CIV204"]},
+      {codigo: "CIV287", nombre: "Adm. y Seguimiento de obras", semestre: 9, requisitos: ["CIV376"]},
+      {codigo: "CIV327", nombre: "Aeropuertos", semestre: 9, requisitos: ["CIV209"]},
+      {codigo: "CIV324", nombre: "Ferrocarriles", semestre: 9, requisitos: ["CIV247"]},
+      {codigo: "CIV366", nombre: "Modelación Hidráulica", semestre: 9, requisitos: ["CIV365"]},
+      {codigo: "CIV359", nombre: "Tratamiento de agua Potable", semestre: 9, requisitos: ["CIV339"]},
+      {codigo: "CIV360", nombre: "Tratamiento de aguas Negras", semestre: 9, requisitos: ["CIV339"]},
+      {codigo: "CIV340", nombre: "Lanorat. de Ing. Sanitaria", semestre: 9, requisitos: ["CIV339"]},
+      {codigo: "CIV345", nombre: "Instal. Hidrosanit. e Indus.", semestre: 9, requisitos: ["CIV232"]},
+      {codigo: "CIV222", nombre: "Mec. de Rocas (Geotecnia)", semestre: 9, requisitos: ["CIV250"]},
+      {codigo: "CIV251", nombre: "Fundaciones 2", semestre: 9, requisitos: ["CIV250"]},
 
-    {codigo: "GRL001", nombre: "Modalidad de Graduación", semestre: 10, requisitos: []},
-    {codigo: "CIV290", nombre: "Practicas profesionales supervisadas PPS", semestre: 10, requisitos: []}
+      {codigo: "GRL001", nombre: "Modalidad de Graduación", semestre: 10, requisitos: []},
+      {codigo: "CIV290", nombre: "Practicas profesionales supervisadas PPS", semestre: 10, requisitos: []}
     ];
 
-   const materiasEstado = {};
-  // Cargar estado guardado del localStorage
-  const savedState = localStorage.getItem('materiasAprobadas');
-  if (savedState) {
-    Object.assign(materiasEstado, JSON.parse(savedState));
-  }
-
-  function renderMaterias() {
-    const container = document.getElementById("materias");
-    container.innerHTML = "";
-
-    for (let s = 1; s <= 10; s++) {
-      const sem = document.createElement("div");
-      sem.className = "semestre";
-      sem.innerHTML = `<h3>Semestre ${s}</h3>`;
-      materias.filter(m => m.semestre === s).forEach(m => {
-        const div = document.createElement("div");
-        div.className = "materia";
-
-        const requisitosCumplidos = m.requisitos.every(r => materiasEstado[r]);
-        div.classList.add(requisitosCumplidos ? "enabled" : "disabled");
-
-        if (materiasEstado[m.codigo]) div.classList.add("completada");
-
-        div.innerText = m.nombre;
-        div.title = requisitosCumplidos ? "Disponible" : `Faltan: ${m.requisitos.filter(r => !materiasEstado[r]).join(", ")}`;
-
-        div.onclick = () => {
-          materiasEstado[m.codigo] = true;
-          localStorage.setItem('materiasAprobadas', JSON.stringify(materiasEstado));
-          renderMaterias();
-        };
-
-        sem.appendChild(div);
-      });
-      container.appendChild(sem);
+    const materiasEstado = {};
+    // Cargar estado guardado del localStorage
+    const savedState = localStorage.getItem('materiasAprobadas');
+    if (savedState) {
+      Object.assign(materiasEstado, JSON.parse(savedState));
     }
-  }
 
-  function resetearProgreso() {
-    localStorage.removeItem('materiasAprobadas');
-    location.reload();
-  }
+    function renderMaterias() {
+      const container = document.getElementById("materias");
+      container.innerHTML = "";
 
-  window.onload = renderMaterias;
-</script>
+      for (let s = 1; s <= 10; s++) {
+        const sem = document.createElement("div");
+        sem.className = "semestre";
+        sem.innerHTML = `<h3>Semestre ${s}</h3>`;
+        materias.filter(m => m.semestre === s).forEach(m => {
+          const div = document.createElement("div");
+          div.className = "materia";
 
-<!-- Botón para reiniciar progreso -->
-<button onclick="resetearProgreso()" style="margin: 1rem auto; display: block; background: #f66; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer;">
-  Reiniciar progreso
-</button>
-  
+          const requisitosCumplidos = m.requisitos.every(r => materiasEstado[r]);
+          div.classList.add(requisitosCumplidos ? "enabled" : "disabled");
+
+          if (materiasEstado[m.codigo]) div.classList.add("completada");
+
+          div.innerText = `${m.codigo} - ${m.nombre}`;
+          div.title = requisitosCumplidos
+            ? "Disponible"
+            : `Faltan: ${m.requisitos.filter(r => !materiasEstado[r]).join(", ")}`;
+
+          div.onclick = () => {
+            if (!requisitosCumplidos) return;
+            materiasEstado[m.codigo] = true;
+            localStorage.setItem("materiasAprobadas", JSON.stringify(materiasEstado));
+            renderMaterias();
+          };
+
+          sem.appendChild(div);
+        });
+        container.appendChild(sem);
+      }
+    }
+
+    function resetearProgreso() {
+      localStorage.removeItem("materiasAprobadas");
+      location.reload();
+    }
+
+    window.onload = () => {
+      renderMaterias();
+      document.getElementById("resetBtn").onclick = resetearProgreso;
+    };
+  </script>
 </body>
 </html>
